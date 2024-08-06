@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: udagram3
+  AWS_PROFILE: default
+  AWS_REGION: us-east-1
+  JWT_SECRET: YMkcX9oyGyTxPvYs7oIihU0U0VmGPjRTks1...
+  POSTGRES_DB: udagram3
+  POSTGRES_HOST: database-1.cwwxxbpbkbva.us-east-1.rds.amazonaws.com
+  URL: http://localhost:8100
+metadata:
+  name: env-config
+# # you will replace URL with the URL of the frontend once you deploy it to AWS.
