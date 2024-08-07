@@ -15,8 +15,11 @@ spec:
         service: reverseproxy
     spec:
       serviceAccountName: default-sa
+      imagePullSecrets:
+        - name: docker-secret
       containers:
         - image: vanlinh303/reverseproxy:v1
+          imagePullPolicy: IfNotPresent
           name: reverseproxy
           resources:
             requests:

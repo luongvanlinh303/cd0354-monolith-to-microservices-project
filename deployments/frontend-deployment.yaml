@@ -16,8 +16,11 @@ spec:
         api: external
     spec:
       serviceAccountName: default-sa
+      imagePullSecrets:
+        - name: docker-secret
       containers:
-        - image: vanlinh303/udagram-frontend:v1
+        - image: vanlinh303/udagram-frontend:v5
+          imagePullPolicy: Always
           name: frontend
           ports:
             - containerPort: 80

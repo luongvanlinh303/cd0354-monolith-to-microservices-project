@@ -7,7 +7,7 @@ data:
   JWT_SECRET: YMkcX9oyGyTxPvYs7oIihU0U0VmGPjRTks1...
   POSTGRES_DB: udagram3
   POSTGRES_HOST: database-1.cwwxxbpbkbva.us-east-1.rds.amazonaws.com
-  URL: http://a5a79aa2e6c9746b398f138b95cf3c46-28208868.us-east-1.elb.amazonaws.com:8100
+  URL: http://acd566047ce39445fab3d8cb83f8dc08-571857031.us-east-1.elb.amazonaws.com:8100
 metadata:
   name: env-config
 # # you will replace URL with the URL of the frontend once you deploy it to AWS.

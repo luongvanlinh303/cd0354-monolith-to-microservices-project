@@ -15,8 +15,11 @@ spec:
         service: api-feed
     spec:
       serviceAccountName: default-sa
+      imagePullSecrets:
+        - name: docker-secret
       containers:
         - image: vanlinh303/udagram-api-feed:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           name: api-feed
