@@ -5,8 +5,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys: [frontend-build]
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
@@ -21,8 +19,11 @@ jobs:
             docker tag udagram-frontend:local vanlinh303/udagram-frontend:v11
             docker build --no-cache -t reverseproxy ./udagram-reverseproxy
             docker tag reverseproxy vanlinh303/reverseproxy:v4
-            # List images to verify
-            docker images
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - /var/lib/docker
+
   push-images:
     docker:
       - image: circleci/node:13.8.0
@@ -30,11 +31,13 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+      - attach_workspace:
+          at: /home/circleci/project
       - run:
           name: push images
           command: |
             docker --version
-            docker images  # List images before pushing
+            docker images  # Double-check if images exist with correct tags
             docker login -u vanlinh303 -p 30031005@@gg
             docker push vanlinh303/udagram-api-feed:v4
             docker push vanlinh303/udagram-api-user:v4
