@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build-images:
     docker:
@@ -24,7 +23,6 @@ jobs:
           root: /home/circleci/project
           paths:
             - /var/lib/docker
-
   push-images:
     docker:
       - image: circleci/node:13.8.0
@@ -39,12 +37,11 @@ jobs:
           command: |
             docker --version
             docker images  # Double-check if images exist with correct tags
-            docker login -u vanlinh303 -p 30031005@@gg
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             docker push vanlinh303/udagram-api-feed:v4
             docker push vanlinh303/udagram-api-user:v4
             docker push vanlinh303/udagram-frontend:v11
             docker push vanlinh303/reverseproxy:v4
-
 workflows:
   default:
     jobs:
