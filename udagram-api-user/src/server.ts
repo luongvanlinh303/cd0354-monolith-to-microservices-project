@@ -33,8 +33,11 @@ import { V0_USER_MODELS } from './controllers/v0/model';
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     preflightContinue: true,
-    origin: config.url,
+    origin: '*',
   }));
+
+  // Handle preflight requests
+  app.options('*', cors());
 
   app.use('/api/v0/', IndexRouter);
 

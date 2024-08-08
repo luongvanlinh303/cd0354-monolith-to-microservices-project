@@ -30,7 +30,7 @@ script:
   - docker build -t udagram-frontend:local ./udagram-frontend
   - docker tag udagram-frontend:local vanlinh303/udagram-frontend:v3
   # Build and tag reverseproxy-api
-  - docker build -t reverseproxy ./reverseproxy
+  - docker build -t reverseproxy ./udagram-reverseproxy
   - docker tag reverseproxy vanlinh303/reverseproxy:v1
 
 after_success:
