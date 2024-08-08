@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build-images:
     docker:
@@ -44,7 +43,6 @@ jobs:
             docker push vanlinh303/udagram-api-user:v4
             docker push vanlinh303/udagram-frontend:v11
             docker push vanlinh303/reverseproxy:v4
-
 workflows:
   default:
     jobs:
