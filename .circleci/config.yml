@@ -13,18 +13,16 @@ jobs:
           name: Build
           command: |
             docker --version
-            # Build and tag feed-api
             docker build --no-cache -t udagram-api-feed ./udagram-api-feed
             docker tag udagram-api-feed vanlinh303/udagram-api-feed:v4
-            # Build and tag user-api
             docker build --no-cache -t udagram-api-user ./udagram-api-user
             docker tag udagram-api-user vanlinh303/udagram-api-user:v4
-            # Build and tag frontend-api
             docker build --no-cache -t udagram-frontend:local ./udagram-frontend
             docker tag udagram-frontend:local vanlinh303/udagram-frontend:v11
-            # Build and tag reverseproxy-api
             docker build --no-cache -t reverseproxy ./udagram-reverseproxy
             docker tag reverseproxy vanlinh303/reverseproxy:v4
+            # List images to verify
+            docker images
   push-images:
     docker:
       - image: circleci/node:13.8.0
@@ -36,6 +34,7 @@ jobs:
           name: push images
           command: |
             docker --version
+            docker images  # List images before pushing
             docker login -u vanlinh303 -p 30031005@@gg
             docker push vanlinh303/udagram-api-feed:v4
             docker push vanlinh303/udagram-api-user:v4
