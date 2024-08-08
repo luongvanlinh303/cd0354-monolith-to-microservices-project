@@ -1,5 +1,4 @@
 version: 2.1
-
 jobs:
   build-images:
     docker:
@@ -26,7 +25,6 @@ jobs:
             # Build and tag reverseproxy-api
             docker build --no-cache -t reverseproxy ./udagram-reverseproxy
             docker tag reverseproxy vanlinh303/reverseproxy:v4
-
   push-images:
     docker:
       - image: circleci/node:13.8.0
