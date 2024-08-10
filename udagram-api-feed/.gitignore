@@ -30,6 +30,8 @@ plugins/ios.json
 $RECYCLE.BIN/
 postgres_dev/
 logfile
+
+# Ignore the .env file
 .env
 
 .DS_Store
